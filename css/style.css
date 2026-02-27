@@ -1,0 +1,1044 @@
+/* ==========================================================================
+   Design System Variables
+   ========================================================================== */
+:root {
+    --bg-color: #0B0F1A;
+    /* Deep Navy Base */
+    --text-primary: #E5E7EB;
+    --text-secondary: #9CA3AF;
+    --accent-color: #3B82F6;
+    /* Accent Blue */
+    --accent-light: #8B5CF6;
+    /* Purple Glow Mid */
+    --accent-hover: #A78BFA;
+    /* Purple Glow Light */
+
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.1);
+
+    --risk-color: #f85149;
+    --risk-bg: rgba(248, 81, 73, 0.1);
+
+    --success-color: #3fb950;
+    --success-bg: rgba(63, 185, 80, 0.1);
+
+    /* Clean typography */
+    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --purple-glow-deep: #7C3AED;
+
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==========================================================================
+   Global Reset & Setup
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    background: #0B0F1A;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    /* GitHub uses semibold for headers */
+    line-height: 1.25;
+    color: #f0f6fc;
+    /* Bright white headers */
+}
+
+section {
+    padding: 6rem 2rem;
+    max-width: 1600px;
+    /* Increased for breathing room */
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Section A: Executive Overview (Hero)
+   ========================================================================== */
+.hero {
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% 60%, rgba(124, 58, 237, 0.4), transparent 60%),
+        linear-gradient(180deg, #0B0F1A 0%, #111827 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle background accent */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -20vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    height: 60vw;
+    /* GitHub Neon Purple/Blue Glow */
+    background: radial-gradient(circle closest-side, rgba(163, 113, 247, 0.15) 0%, rgba(121, 192, 255, 0.1) 40%, rgba(13, 17, 23, 0) 100%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    z-index: 1;
+    margin-bottom: 4rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    opacity: 0;
+    /* for animation */
+    transform: translateY(20px);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--text-secondary);
+    font-weight: 400;
+    opacity: 0;
+    /* for animation */
+    transform: translateY(20px);
+}
+
+/* KPI Grid */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    z-index: 1;
+}
+
+.kpi-card {
+    /* Base wrapper styles */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity, box-shadow;
+    transform: translateZ(0);
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 60px rgba(124, 58, 237, 0.4);
+}
+
+.kpi-icon {
+    font-size: 2rem;
+    color: var(--accent-light);
+    margin-bottom: 1rem;
+}
+
+.kpi-value {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #f0f6fc;
+    margin-bottom: 0.5rem;
+}
+
+.kpi-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Specialized KPI Cards */
+.risk-card {
+    border-color: rgba(211, 47, 47, 0.2);
+}
+
+.risk-card .kpi-icon {
+    color: var(--risk-color);
+}
+
+.risk-card .kpi-value {
+    color: var(--risk-color);
+}
+
+.risk-card:hover {
+    border-color: var(--risk-color);
+}
+
+.success-card {
+    border-color: rgba(46, 125, 50, 0.2);
+}
+
+.success-card .kpi-icon {
+    color: var(--success-color);
+}
+
+.success-card .kpi-value {
+    color: var(--success-color);
+}
+
+.success-card:hover {
+    border-color: var(--success-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   Shared Section Styles
+   ========================================================================== */
+.section-light {
+    background-color: transparent;
+}
+
+.section-dark {
+    background-color: transparent;
+    /* Relying on overall body gradient or leaving uniform */
+    color: var(--text-primary);
+    position: relative;
+}
+
+/* Base Body Background for the whole document to handle deep gradients */
+body {
+    background: #0B0F1A;
+}
+
+.section-glow {
+    position: relative;
+}
+
+.section-glow::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.2), transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(120px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Removed specific pipeline glow, replacing with .section-glow logic */
+
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-header.text-center {
+    text-align: center;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
+.text-light {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #A78BFA, #3B82F6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.section-line {
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-light);
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   Section B: Problem Statement
+   ========================================================================== */
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.problem-card {
+    background-color: var(--card-bg);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    border-top: 4px solid transparent;
+    transition: var(--transition);
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+}
+
+.problem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 60px rgba(124, 58, 237, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.problem-card:nth-child(1):hover {
+    border-top-color: #f4b400;
+}
+
+.problem-card:nth-child(2):hover {
+    border-top-color: #db4437;
+}
+
+.problem-card:nth-child(3):hover {
+    border-top-color: #4285f4;
+}
+
+.problem-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(10, 31, 68, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+}
+
+.problem-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #f0f6fc;
+}
+
+.problem-card p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Section C: Data Pipeline Architecture
+   ========================================================================== */
+.pipeline-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.pipeline-step {
+    flex: 1;
+    min-width: 220px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    transition: var(--transition);
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+}
+
+.pipeline-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.excel-icon {
+    color: #21a366;
+}
+
+.python-icon {
+    color: #3776ab;
+}
+
+.sql-icon {
+    color: #f29111;
+}
+
+.dashboard-icon {
+    color: #a155b9;
+}
+
+.pipeline-step h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.pipeline-step p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.pipeline-step code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #e0e0e0;
+}
+
+.pipeline-arrow {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden-desktop {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .pipeline-flow {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pipeline-arrow {
+        padding: 1rem 0;
+    }
+
+    .hidden-mobile {
+        display: none;
+    }
+
+    .hidden-desktop {
+        display: inline-block;
+    }
+}
+
+/* ==========================================================================
+   Section D & E Utilities
+   ========================================================================== */
+.section-gray {
+    background-color: #f8f9fa;
+}
+
+.text-risk {
+    color: var(--risk-color);
+}
+
+.text-success {
+    color: var(--success-color);
+}
+
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-right: 0.5rem;
+}
+
+.badge.error {
+    background: var(--risk-bg);
+    color: var(--risk-color);
+    border: 1px solid rgba(211, 47, 47, 0.3);
+}
+
+.badge.success {
+    background: var(--success-bg);
+    color: var(--success-color);
+    border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+/* ==========================================================================
+   Section D: Data Cleaning & Processing
+   ========================================================================== */
+.code-showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.data-state-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.data-state-card.before-state {
+    border-top: 4px solid var(--risk-color);
+}
+
+.data-state-card.after-state {
+    border-top: 4px solid var(--success-color);
+}
+
+.state-header {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.issue-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.issue-list li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Mock Tables */
+.table-container {
+    overflow-x: auto;
+    margin-top: auto;
+}
+
+.mock-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.mock-table th,
+.mock-table td {
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.mock-table th {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f0f6fc;
+    font-weight: 600;
+}
+
+.issue-row {
+    background-color: rgba(211, 47, 47, 0.05);
+    color: var(--risk-color);
+}
+
+.risk-row {
+    background-color: var(--risk-bg);
+    color: var(--risk-color);
+    font-weight: 600;
+}
+
+/* Code Blocks */
+.code-block-container {
+    background: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.code-header {
+    background: #2d2d2d;
+    padding: 0.75rem 1rem;
+    color: #cecece;
+    font-family: monospace;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid #444;
+}
+
+.code-block-container pre {
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.code-block-container code {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #d4d4d4;
+}
+
+/* Very basic syntax highlight simulation */
+.language-python {
+    color: #d4d4d4;
+}
+
+.language-python .keyword {
+    color: #569cd6;
+}
+
+/* Simulating via JS later, but default styling here */
+
+.sql-theme {
+    background: #0d1b2a;
+}
+
+.sql-theme .code-header {
+    background: #1b263b;
+    border-bottom: 1px solid #415a77;
+}
+
+@media (max-width: 1024px) {
+    .code-showcase-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   Section E: SQL Insights Layer
+   ========================================================================== */
+.sql-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem;
+}
+
+.insight-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+}
+
+.insight-meta {
+    padding: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.insight-meta h3 {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.insight-meta p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.insight-card .code-block-container {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .sql-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   Section F: Analytical Dashboard
+   ========================================================================== */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.chart-card {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+}
+
+.chart-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.chart-header h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.chart-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn.active {
+    background: var(--accent-light);
+    color: white;
+    border-color: var(--accent-light);
+}
+
+.chart-body {
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-card.full-width {
+        grid-column: 1 / 2;
+    }
+}
+
+/* ==========================================================================
+   Section G: Business Impact Simulation
+   ========================================================================== */
+.impact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.impact-stat {
+    text-align: center;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+/* Decorative ring */
+.stat-circle::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 2px solid transparent;
+    border-top-color: var(--accent-light);
+    border-right-color: var(--accent-light);
+    border-radius: 50%;
+    transform: rotate(-15deg);
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.stat-number small {
+    font-size: 1.5rem;
+    color: var(--accent-light);
+    margin-left: 2px;
+}
+
+.impact-stat h4 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.impact-stat p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+    background-color: #051024;
+    padding: 3rem 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-logo i {
+    color: var(--accent-light);
+}
+
+/* ==========================================================================
+   Toast Notifications
+   ========================================================================== */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    min-width: 250px;
+    border-left: 5px solid;
+    font-size: 1rem;
+}
+
+.toast-success {
+    border-color: var(--success-color);
+    color: var(--text-primary);
+}
+
+.toast-success i {
+    color: var(--success-color);
+    font-size: 1.2rem;
+}
+
+.toast-error {
+    border-color: var(--risk-color);
+    color: var(--text-primary);
+}
+
+.toast-error i {
+    color: var(--risk-color);
+    font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   Narrative Text Section
+   ========================================================================== */
+.text-section .content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.text-section .lead-text {
+    font-size: 1.35rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.text-section p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   Portfolio Footer
+   ========================================================================== */
+.portfolio-footer {
+    padding: 4rem 2rem 2rem 2rem;
+}
+
+.portfolio-footer .footer-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-brand i {
+    font-size: 2.5rem;
+    color: var(--accent-light);
+}
+
+.footer-brand h3 {
+    margin-bottom: 0.25rem;
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.footer-brand p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .portfolio-footer .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-brand {
+        flex-direction: column;
+    }
+
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
