@@ -1,0 +1,15 @@
+{
+    "name": "student-attendance-dashboard",
+    "version": "1.0.0",
+    "description": "Student Attendance Analytics Dashboard built for Vercel.",
+    "main": "api/index.js",
+    "scripts": {
+        "start": "node backend/server.js",
+        "seed": "node backend/db/seed.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.6",
+        "express": "^5.2.1",
+        "sqlite3": "^5.1.7"
+    }
+}

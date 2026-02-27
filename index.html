@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance Analytics Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Section A: Executive Overview (Hero) -->
+    <header class="hero" id="overview">
+        <div class="hero-content">
+            <h1 class="hero-title gradient-text">STUDENT ATTENDANCE ANALYTICS DASHBOARD</h1>
+            <p class="hero-subtitle">Attendance Intelligence Built Using Excel, SQL & Python (Pandas)</p>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="kpi-card glass-card">
+                <i class="fa-solid fa-users kpi-icon"></i>
+                <div class="kpi-value format-number" data-target="1250">0</div>
+                <div class="kpi-label">Total Students</div>
+            </div>
+
+            <div class="kpi-card glass-card">
+                <i class="fa-solid fa-chart-line kpi-icon"></i>
+                <div class="kpi-value format-percent" data-target="82.4">0.0</div>
+                <div class="kpi-label">Average Attendance %</div>
+            </div>
+
+            <div class="kpi-card risk-card glass-card">
+                <i class="fa-solid fa-triangle-exclamation kpi-icon"></i>
+                <div class="kpi-value format-number" data-target="145">0</div>
+                <div class="kpi-label">Students Below 75%</div>
+            </div>
+
+            <div class="kpi-card success-card glass-card">
+                <i class="fa-solid fa-trophy kpi-icon"></i>
+                <div class="kpi-value format-percent" data-target="99.8">0.0</div>
+                <div class="kpi-label">Highest Attendance %</div>
+            </div>
+
+            <div class="kpi-card glass-card">
+                <i class="fa-solid fa-database kpi-icon"></i>
+                <div class="kpi-value format-number" data-target="145000">0</div>
+                <div class="kpi-label">Total Records Processed</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Narrative Context -->
+    <section id="project-context" class="section-light text-section">
+        <div class="content-wrapper">
+            <h2 class="section-title gradient-text">Bridging Data and Action</h2>
+            <div class="section-line"></div>
+            <p class="lead-text">
+                This dashboard represents a full-stack approach to resolving administrative bottlenecks in educational
+                institutions.
+                By transitioning from isolated Excel spreadsheets to a centralized, relational SQLite database powered
+                by a Node.js API,
+                we transformed raw attendance logs into live, actionable intelligence.
+            </p>
+            <p>
+                The resulting system not only automates the calculation of critical KPIs—such as identifying at-risk
+                cohorts falling
+                below the 75% threshold—but also provides beautifully rendered, interactive visualizations allowing
+                stakeholders
+                to make data-driven decisions instantly.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section B: Problem Statement -->
+    <section id="problem-statement" class="section-light section-glow">
+        <div class="section-header">
+            <h2 class="section-title gradient-text">The Challenge</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="problem-grid">
+            <div class="problem-card glass-card">
+                <div class="problem-icon"><i class="fa-solid fa-file-excel"></i></div>
+                <h3>Manual Tracking Overhead</h3>
+                <p>Traditional attendance tracking relies on disparate Excel sheets, leading to fragmented data, human
+                    error, and significant administrative overhead without generating actionable insights.</p>
+            </div>
+
+            <div class="problem-card glass-card">
+                <div class="problem-icon"><i class="fa-solid fa-user-clock"></i></div>
+                <h3>Delayed Risk Identification</h3>
+                <p>Without automated thresholds, identifying at-risk students (falling below 75% attendance) happens too
+                    late in the academic cycle for meaningful intervention.</p>
+            </div>
+
+            <div class="problem-card glass-card">
+                <div class="problem-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3>Lack of Structured Reporting</h3>
+                <p>Stakeholders lack a unified, high-level view of attendance health across subjects and timeframes,
+                    making data-driven academic policy decisions difficult.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section C: Data Pipeline Architecture -->
+    <section id="pipeline" class="section-dark section-glow">
+        <div class="section-header text-center">
+            <h2 class="section-title text-white gradient-text">Data Pipeline Architecture</h2>
+            <p class="section-subtitle text-light">From raw spreadsheets to actionable analytics</p>
+            <div class="section-line mx-auto"></div>
+        </div>
+
+        <div class="pipeline-flow">
+            <!-- Step 1 -->
+            <div class="pipeline-step glass-card">
+                <div class="step-icon excel-icon"><i class="fa-solid fa-file-csv"></i></div>
+                <h4>1. Raw Data Extraction</h4>
+                <p>Ingesting unformatted Excel files (.xlsx, .csv) containing daily student logs.</p>
+            </div>
+
+            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right-long hidden-mobile"></i><i
+                    class="fa-solid fa-arrow-down-long hidden-desktop"></i></div>
+
+            <!-- Step 2 -->
+            <div class="pipeline-step glass-card">
+                <div class="step-icon python-icon"><i class="fa-brands fa-python"></i></div>
+                <h4>2. Pandas Processing</h4>
+                <p>Data cleaning: <code>dropna()</code>, standardizing dates, handling duplicates, calculating rolling
+                    percentages.</p>
+            </div>
+
+            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right-long hidden-mobile"></i><i
+                    class="fa-solid fa-arrow-down-long hidden-desktop"></i></div>
+
+            <!-- Step 3 -->
+            <div class="pipeline-step glass-card">
+                <div class="step-icon sql-icon"><i class="fa-solid fa-database"></i></div>
+                <h4>3. SQL Aggregation</h4>
+                <p>Executing relational queries to compute monthly averages, subject distributions, and risk cohorts.
+                </p>
+            </div>
+
+            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right-long hidden-mobile"></i><i
+                    class="fa-solid fa-arrow-down-long hidden-desktop"></i></div>
+
+            <!-- Step 4 -->
+            <div class="pipeline-step glass-card">
+                <div class="step-icon dashboard-icon"><i class="fa-solid fa-chart-column"></i></div>
+                <h4>4. Insight Generation</h4>
+                <p>Rendering interactive visualizations and KPI metrics for stakeholder consumption.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section D: Data Cleaning & Processing -->
+    <section id="data-cleaning" class="section-light">
+        <div class="section-header">
+            <h2 class="section-title gradient-text">Data Cleaning & Processing</h2>
+            <p class="section-subtitle">Transforming raw data into analysis-ready structures</p>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="code-showcase-grid">
+            <!-- Problem state -->
+            <div class="data-state-card before-state glass-card">
+                <div class="state-header"><span class="badge error">Before</span> Raw Excel Data</div>
+                <ul class="issue-list">
+                    <li><i class="fa-solid fa-xmark text-risk"></i> Missing Student IDs</li>
+                    <li><i class="fa-solid fa-xmark text-risk"></i> Duplicate entries for same date</li>
+                    <li><i class="fa-solid fa-xmark text-risk"></i> Inconsistent date formats</li>
+                </ul>
+                <div class="table-container mock-table">
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr class="issue-row">
+                            <td>NaN</td>
+                            <td>John Doe</td>
+                            <td>12-01-2023</td>
+                            <td>P</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Jane Smith</td>
+                            <td>2023-01-12</td>
+                            <td>A</td>
+                        </tr>
+                        <tr class="issue-row">
+                            <td>102</td>
+                            <td>Jane Smith</td>
+                            <td>2023-01-12</td>
+                            <td>A</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Python Code -->
+            <div class="code-block-container">
+                <div class="code-header"><i class="fa-brands fa-python"></i> preprocessing.py</div>
+                <pre><code class="language-python"># Load raw attendance log
+df = pd.read_excel('raw_attendance.xlsx')
+
+# Remove duplicate entries
+df.drop_duplicates(subset=['Student_ID', 'Date'], inplace=True)
+
+# Handle missing identifiers
+df.dropna(subset=['Student_ID'], inplace=True)
+
+# Standardize date format
+df['Date'] = pd.to_datetime(df['Date'])
+
+# Calculate boolean attendance (1=P, 0=A)
+df['Is_Present'] = df['Status'].apply(lambda x: 1 if x == 'P' else 0)
+
+# Calculate aggregated attendance %
+summary = df.groupby('Student_ID').agg(
+    Total_Days=('Date', 'nunique'),
+    Days_Present=('Is_Present', 'sum')
+)
+summary['Attendance_Pct'] = (summary['Days_Present'] / summary['Total_Days']) * 100
+</code></pre>
+            </div>
+
+            <!-- Clean State -->
+            <div class="data-state-card after-state glass-card">
+                <div class="state-header"><span class="badge success">After</span> Clean Analytics Data</div>
+                <ul class="issue-list">
+                    <li><i class="fa-solid fa-check text-success"></i> Unique composite keys</li>
+                    <li><i class="fa-solid fa-check text-success"></i> Standardized ISO dates</li>
+                    <li><i class="fa-solid fa-check text-success"></i> Computed attendance %</li>
+                </ul>
+                <div class="table-container mock-table">
+                    <table>
+                        <tr>
+                            <th>Student_ID</th>
+                            <th>Days_Present</th>
+                            <th>Total_Days</th>
+                            <th>Attendance_Pct</th>
+                        </tr>
+                        <tr>
+                            <td>101</td>
+                            <td>42</td>
+                            <td>45</td>
+                            <td>93.3%</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>34</td>
+                            <td>45</td>
+                            <td>75.6%</td>
+                        </tr>
+                        <tr class="risk-row">
+                            <td>103</td>
+                            <td>28</td>
+                            <td>45</td>
+                            <td>62.2%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section E: SQL Insights Layer -->
+    <section id="sql-insights" class="section-gray">
+        <div class="section-header text-center">
+            <h2 class="section-title gradient-text">SQL Insights Layer</h2>
+            <p class="section-subtitle">Analytical queries for stakeholder reporting</p>
+            <div class="section-line mx-auto"></div>
+        </div>
+
+        <div class="sql-grid">
+            <!-- Query 1 -->
+            <div class="insight-card glass-card">
+                <div class="insight-meta">
+                    <h3>At-Risk Students Pipeline</h3>
+                    <p>Identifies bottom quartile students requiring academic intervention.</p>
+                </div>
+                <div class="code-block-container sql-theme">
+                    <pre><code class="language-sql">SELECT 
+    s.Student_ID,
+    s.Name,
+    s.Department,
+    a.Attendance_Pct
+FROM Student_Dimension s
+JOIN Attendance_Fact a ON s.Student_ID = a.Student_ID
+WHERE a.Attendance_Pct < 75.0
+ORDER BY a.Attendance_Pct ASC;</code></pre>
+                </div>
+            </div>
+
+            <!-- Query 2 -->
+            <div class="insight-card glass-card">
+                <div class="insight-meta">
+                    <h3>Departmental Distribution</h3>
+                    <p>Aggregates attendance metrics to compare health across disciplines.</p>
+                </div>
+                <div class="code-block-container sql-theme">
+                    <pre><code class="language-sql">SELECT 
+    Department,
+    COUNT(Student_ID) as Total_Students,
+    ROUND(AVG(Attendance_Pct), 2) as Avg_Attendance
+FROM Attendance_Summary
+GROUP BY Department
+HAVING AVG(Attendance_Pct) > 0
+ORDER BY Avg_Attendance DESC;</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section F: Analytical Dashboard -->
+    <section id="analytical-dashboard" class="section-light section-glow">
+        <div class="section-header">
+            <h2 class="section-title gradient-text">Analytical Dashboard</h2>
+            <p class="section-subtitle">Interactive visualization of student attendance patterns</p>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Main Chart: Monthly Trend -->
+            <div class="chart-card full-width glass-card">
+                <div class="chart-header">
+                    <h3>Monthly Attendance Trend</h3>
+                    <div class="chart-actions">
+                        <button class="btn btn-sm active">All Contexts</button>
+                        <button class="btn btn-sm">Lecture Only</button>
+                    </div>
+                </div>
+                <div class="chart-body" style="height: 350px;">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Present vs Absent Ratio -->
+            <div class="chart-card glass-card">
+                <div class="chart-header">
+                    <h3>Overall Status Ratio</h3>
+                </div>
+                <div class="chart-body" style="height: 300px; display: flex; justify-content: center;">
+                    <canvas id="ratioChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Subject Distribution -->
+            <div class="chart-card glass-card">
+                <div class="chart-header">
+                    <h3>Attendance By Subject</h3>
+                </div>
+                <div class="chart-body" style="height: 300px;">
+                    <canvas id="subjectChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section G: Business Impact Simulation -->
+    <section id="impact" class="section-dark">
+        <div class="section-header text-center">
+            <h2 class="section-title text-white gradient-text">Business Impact</h2>
+            <p class="section-subtitle text-light">Measurable outcomes of automated attendance analytics</p>
+            <div class="section-line mx-auto"></div>
+        </div>
+
+        <div class="impact-grid">
+            <div class="impact-stat">
+                <div class="stat-circle">
+                    <span class="stat-number">40<small>hr</small></span>
+                </div>
+                <h4>Manual Reporting Saved</h4>
+                <p>per month previously spent on Excel data consolidation.</p>
+            </div>
+
+            <div class="impact-stat">
+                <div class="stat-circle">
+                    <span class="stat-number">100<small>%</small></span>
+                </div>
+                <h4>Accuracy Increase</h4>
+                <p>by eliminating human transcription errors.</p>
+            </div>
+
+            <div class="impact-stat">
+                <div class="stat-circle">
+                    <span class="stat-number">145</span>
+                </div>
+                <h4>At-Risk Interventions</h4>
+                <p>identified proactively before the semester end.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Footer -->
+    <footer class="portfolio-footer section-dark">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <i class="fa-solid fa-code"></i>
+                <div>
+                    <h3>Mr. Aman Kumar Verma</h3>
+                    <p>Designed and Built for the Modern Web</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/aman-kumar-verma8604/" target="_blank" class="social-link"
+                    title="LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/amankumarverma746" target="_blank" class="social-link" title="GitHub"><i
+                        class="fa-brands fa-github"></i> GitHub</a>
+                <a href="#" class="social-link" title="Portfolio"><i class="fa-solid fa-globe"></i> Portfolio</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Academic Analytics Prototype. Built with Node.js, SQLite, Vanilla JS, and GSAP.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
